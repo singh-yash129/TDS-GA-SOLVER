@@ -1,0 +1,26 @@
+# FastAPI Core
+fastapi
+uvicorn
+starlette
+requests
+httpx
+python-multipart
+
+# Data Processing (Keep if Needed)
+numpy
+pandas
+rapidfuzz
+duckdb
+tiktoken==0.9.0
+
+Pillow
+beautifulsoup4
+PyMuPDF
+docker
+PyGithub
+geographiclib==2.0
+geopandas==1.0.1
+geopy==2.4.1
+
+pymupdf4llm
+tabula-py

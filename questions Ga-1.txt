@@ -1,0 +1,79 @@
+1. **VS Code Version**
+   - Install and run Visual Studio Code. In your Terminal (or Command Prompt), type `code -s` and press Enter. Copy and paste the *entire output* below.
+   - What is the output of `code -s`?
+
+2. **Make HTTP requests with uv**
+   - Running `uv run --with httpie -- https [URL]` installs the Python package `httpie` and sends a HTTPS request to the URL.
+   - Send a HTTPS request to `https://httpbin.org/get` with the URL encoded parameter `email` set to your email.
+   - What is the JSON output of the command? (Paste only the JSON body, not the headers)
+
+3. **Run command with npx**
+   - Let's make sure you know how to use `npx` and `prettier`.
+   - Download the provided `README.md` file. In the directory where you downloaded it, make sure it is called `README.md`, and run `npx -y prettier@3.4.2 README.md | sha256sum`.
+   - What is the output of the command?
+
+4. **Use Google Sheets**
+   - Let's make sure you can write formulas in Google Sheets. Type this formula into Google Sheets. (It won't work in Excel)
+   - `=SUM(ARRAY_CONSTRAIN(SEQUENCE(100, 100, ${s}, ${i}), 1, 10))`
+   - What is the result?
+
+5. **Use Excel**
+   - Let's make sure you can write formulas in Excel. Type this formula into Excel.
+   - Note: **This will ONLY work in Office 365.**
+   - `=SUM(TAKE(SORTBY({${i.join(",")}}, {${s.join(",")}}), 1, ${r}))`
+   - What is the result?
+
+6. **Use DevTools**
+   - Just above this paragraph, there's a hidden input with a secret value.
+   - What is the value in the hidden input?
+
+7. **Count Wednesdays**
+   - How many Wednesdays are there in the date range ${r.toISOString().split("T")[0]} to ${c.toISOString().split("T")[0]}?
+   - The dates are in the year-month-day format. Include both the start and end date in your count. You can do thldlis using any tool (e.g. Excel, Python, JavaScript, manually).
+
+8. **Extract CSV from a ZIP**
+   - Download and unzip the provided file `extract-csv-zip.zip` which has a single `extract.csv` file inside.
+   - What is the value in the "answer" column of the CSV file?
+
+9. **Use JSON**
+   - Let's make sure you know how to use JSON. Sort this JSON array of objects by the value of the `age` field. In case of a tie, sort by the `name` field. Paste the resulting JSON below without any spaces or newlines.
+   - `[{...}]`
+   - Sorted JSON:
+
+10. **Multi-cursor edits to convert to JSON**
+    - Download and use multi-cursors to convert the provided text file into a single JSON object.
+    - What’s the result when you paste the JSON at the provided link and click the Hash button?
+
+11. **CSS selectors**
+    - Let's make sure you know how to select elements using CSS selectors. Find all `<div>`s having a `foo` class in the hidden element below. What's the sum of their `data-value` attributes?
+    - Sum of data-value attributes:
+
+12. **Process files with different encodings**
+    - Download and process the files in the provided ZIP file which contains three files with different encodings.
+    - Each file has 2 columns: symbol and value. Sum up all the values where the symbol matches the specified symbols across all three files.
+    - What is the sum of all values associated with these symbols?
+
+13. **Use GitHub**
+    - Let's make sure you know how to use GitHub. Create a new public repository. Commit a single JSON file called `email.json` with the value `{"email": "your email"}` and push it.
+    - Enter the raw GitHub URL of `email.json` so we can verify it.
+
+14. **Replace across files**
+    - Download and unzip the provided file, then replace all "IITM" (in upper, lower, or mixed case) with "IIT Madras" in all files.
+    - What does running `cat * | sha256sum` in that folder show in bash?
+
+15. **List files and attributes**
+    - Download and extract the provided ZIP file. Use `ls` with options to list all files in the folder along with their date and file size.
+    - What's the total size of all files at least ${m} bytes large and modified on or after ${xe(u)}?
+
+16. **Move and rename files**
+    - Download and extract the provided ZIP file. Use `mv` to move all files under folders into an empty folder. Then rename all files replacing each digit with the next. 1 becomes 2, 9 becomes 0.
+    - What does running `grep . * | LC_ALL=C sort | sha256sum` in bash on that folder show?
+
+17. **Compare files**
+    - Download and extract the provided ZIP file. It has 2 nearly identical files, `a.txt` and `b.txt`, with the same number of lines.
+    - How many lines are different between `a.txt` and `b.txt`?
+
+18. **SQL: Ticket Sales**
+    - There is a `tickets` table in a SQLite database that has columns `type`, `units`, and `price`. Each row is a customer bid for a concert ticket.
+    - What is the total sales of all the items in the "Gold" ticket type? Write SQL to calculate it.
+    - Get all rows where the Type is "Gold". Ignore spaces and treat mis-spellings like GOLD, gold, etc. as "Gold". Calculate the sales as Units * Price, and sum them up.

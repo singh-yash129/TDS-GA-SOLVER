@@ -1,0 +1,195 @@
+1. DataSentinel Inc. is a tech company specializing in building advanced natural language processing (NLP) solutions. Their latest project involves integrating an AI-powered sentiment analysis module into an internal monitoring dashboard. The goal is to automatically classify large volumes of unstructured feedback and text data from various sources as either GOOD, BAD, or NEUTRAL. As part of the quality assurance process, the development team needs to test the integration with a series of sample inputs—even ones that may not represent coherent text—to ensure that the system routes and processes the data correctly.
+
+Before rolling out the live system, the team creates a test harness using Python. The harness employs the httpx library to send POST requests to OpenAI's API. For this proof-of-concept, the team uses the dummy model gpt-4o-mini along with a dummy API key in the Authorization header to simulate real API calls.
+
+One of the test cases involves sending a sample piece of meaningless text:
+
+zR Dw5q7Rq8cMqGWphK  hyOL p2  ZxPR  Yr  fALEtt dS
+Write a Python program that uses httpx to send a POST request to OpenAI's API to analyze the sentiment of this (meaningless) text into GOOD, BAD or NEUTRAL. Specifically:
+
+Make sure you pass an Authorization header with dummy API key.
+Use gpt-4o-mini as the model.
+The first message must be a system message asking the LLM to analyze the sentiment of the text. Make sure you mention GOOD, BAD, or NEUTRAL as the categories.
+The second message must be exactly the text contained above.
+This test is crucial for DataSentinel Inc. as it validates both the API integration and the correctness of message formatting in a controlled environment. Once verified, the same mechanism will be used to process genuine customer feedback, ensuring that the sentiment analysis module reliably categorizes data as GOOD, BAD, or NEUTRAL. This reliability is essential for maintaining high operational standards and swift response times in real-world applications.
+
+Note: This uses a dummy httpx library, not the real one. You can only use:
+
+response = httpx.get(url, **kwargs)
+response = httpx.post(url, json=None, **kwargs)
+response.raise_for_status()
+response.json()
+
+
+2.LexiSolve Inc. is a startup that delivers a conversational AI platform to enterprise clients. The system leverages OpenAI’s language models to power a variety of customer service, sentiment analysis, and data extraction features. Because pricing for these models is based on the number of tokens processed—and strict token limits apply—accurate token accounting is critical for managing costs and ensuring system stability.
+
+To optimize operational costs and prevent unexpected API overages, the engineering team at LexiSolve has developed an internal diagnostic tool that simulates and measures token usage for typical prompts sent to the language model.
+
+One specific test case an understanding of text tokenization. Your task is to generate data for that test case.
+
+Specifically, when you make a request to OpenAI's GPT-4o-Mini with just this user message:
+
+List only the valid English words from these: ngWLxZpz, BTFBLw, xx, M, 2P, vXhPOyA5, 1Vr, Prr0gy79cH, ciSJQgT, 2hf7, UjhSo, NDfeVtkjM, gnH, Sev, N4l, Wyyqu6, 46, bGxqc9, gAB, c5o, E6P, vaDQAH3D, 9kznRp, X, 8s978WG, b9zSUgA, 0jtGZ, 6eoUx3o, zvF9S3bFU, W9hk, 7, yCgsZkw10A, 09NvDj1S, Z2, jVdlsMd, 7t, BpKhi4, PPs, XyE31CG, o, 53KG5nE6N, 1ea8lXX, iniCV, Vj0fOW, m, cxSv9sUrg, RaNcsBfTk, KdKYEoWZy5, A5UxeW, eKAotbPrI, kqNsM3VZqd, gZLxOy0, V, VWhGQbbc, s, 8CElNu, F4XNjn14F, Nku3D, iu5, tOH5R5S, 1, QN, Bl6McN3GO, 069XByt, 78Fp47, K7Uelg52K, etVouVNLw1
+... how many input tokens does it use up?
+
+Number of tokens:
+
+3. RapidRoute Solutions is a logistics and delivery company that relies on accurate and standardized address data to optimize package routing. Recently, they encountered challenges with manually collecting and verifying new addresses for testing their planning software. To overcome this, the company decided to create an automated address generator using a language model, which would provide realistic, standardized U.S. addresses that could be directly integrated into their system.
+
+The engineering team at RapidRoute is tasked with designing a service that uses OpenAI's GPT-4o-Mini model to generate fake but plausible address data. The addresses must follow a strict format, which is critical for downstream processes such as geocoding, routing, and verification against customer databases. For consistency and validation, the development team requires that the addresses be returned as structured JSON data with no additional properties that could confuse their parsers.
+
+As part of the integration process, you need to write the body of the request to an OpenAI chat completion call that:
+
+Uses model gpt-4o-mini
+Has a system message: Respond in JSON
+Has a user message: Generate 10 random addresses in the US
+Uses structured outputs to respond with an object addresses which is an array of objects with required fields: state (string) longitude (number) county (string) .
+Sets additionalProperties to false to prevent additional properties.
+Note that you don't need to run the request or use an API key; your task is simply to write the correct JSON body.
+
+What is the JSON body we should send to https://api.openai.com/v1/chat/completions for this? (No need to run it or to use an API key. Just write the body of the request below.)
+
+
+4. Acme Global Solutions manages hundreds of invoices from vendors every month. To streamline their accounts payable process, the company is developing an automated document processing system. This system uses a computer vision model to extract useful text from scanned invoice images. Critical pieces of data such as vendor email addresses, invoice or transaction numbers, and other details are embedded within these documents.
+
+Your team is tasked with integrating OpenAI's vision model into the invoice processing workflow. The chosen model, gpt-4o-mini, is capable of analyzing both text and image inputs simultaneously. When an invoice is received—for example, an invoice image may contain a vendor email like alice.brown@acmeglobal.com and a transaction number such as 34921. The system needs to extract all embedded text to automatically populate the vendor management system.
+
+The automated process will send a POST request to OpenAI's API with two inputs in a single user message:
+
+Text: A simple instruction "Extract text from this image."
+Image URL: A base64 URL representing the invoice image that might include the email and the transaction number among other details.
+Here is an example invoice image:
+
+
+
+Write just the JSON body (not the URL, nor headers) for the POST request that sends these two pieces of content (text and image URL) to the OpenAI API endpoint.
+
+Use gpt-4o-mini as the model.
+Send a single user message to the model that has a text and an image_url content (in that order).
+The text content should be Extract text from this image.
+Send the image_url as a base64 URL of the image above. CAREFUL: Do not modify the image.
+
+
+5. SecurePay, a leading fintech startup, has implemented an innovative feature to detect and prevent fraudulent activities in real time. As part of its security suite, the system analyzes personalized transaction messages by converting them into embeddings. These embeddings are compared against known patterns of legitimate and fraudulent messages to flag unusual activity.
+
+Imagine you are working on the SecurePay team as a junior developer tasked with integrating the text embeddings feature into the fraud detection module. When a user initiates a transaction, the system sends a personalized verification message to the user's registered email address. This message includes the user's email address and a unique transaction code (a randomly generated number). Here are 2 verification messages:
+
+Dear user, please verify your transaction code 68112 sent to 23f2004644@ds.study.iitm.ac.in
+Dear user, please verify your transaction code 72637 sent to 23f2004644@ds.study.iitm.ac.in
+The goal is to capture this message, convert it into a meaningful embedding using OpenAI's text-embedding-3-small model, and subsequently use the embedding in a machine learning model to detect anomalies.
+
+Your task is to write the JSON body for a POST request that will be sent to the OpenAI API endpoint to obtain the text embedding for the 2 given personalized transaction verification messages above. This will be sent to the endpoint https://api.openai.com/v1/embeddings.
+
+
+
+6. ShopSmart is an online retail platform that places a high value on customer feedback. Each month, the company receives hundreds of comments from shoppers regarding product quality, delivery speed, customer service, and more. To automatically understand and cluster this feedback, ShopSmart's data science team uses text embeddings to capture the semantic meaning behind each comment.
+
+As part of a pilot project, ShopSmart has curated a collection of 25 feedback phrases that represent a variety of customer sentiments. Examples of these phrases include comments like “Fast shipping and great service,” “Product quality could be improved,” “Excellent packaging,” and so on. Due to limited processing capacity during initial testing, you have been tasked with determine which pair(s) of 5 of these phrases are most similar to each other. This similarity analysis will help in grouping similar feedback to enhance the company’s understanding of recurring customer issues.
+
+ShopSmart has written a Python program that has the 5 phrases and their embeddings as an array of floats. It looks like this:
+
+embeddings = {"I experienced issues during checkout.":[-0.10228022187948227,-0.057035524398088455,-0.03200617432594299,-0.1569785177707672,-0.11162916570901871,-0.017878107726573944,-0.06209372356534004,0.18209508061408997,-0.0027645661029964685,0.12928052246570587,0.17609500885009766,-0.11846645176410675,-0.2356770783662796,0.05536108836531639,-0.07102405279874802,0.21265356242656708,-0.03218059614300728,0.2578633725643158,-0.11707108467817307,0.23163051903247833,0.1780485212802887,0.17972294986248016,0.05302385240793228,0.06889612227678299,-0.13932715356349945,-0.14428070187568665,0.17149029672145844,-0.25590986013412476,0.22311879694461823,-0.06321001797914505,0.019430451095104218,-0.1841881275177002,0.14204810559749603,-0.09976856410503387,-0.17888574302196503,0.07890786230564117,-0.008947774767875671,0.08065207302570343,0.3131197988986969,-0.009226848371326923,-0.1460946649312973,0.16423441469669342,0.024331670254468918,0.055779699236154556,-0.08274511992931366,0.2355375438928604,0.06582632660865784,-0.13674572110176086,-0.003309630323201418,0.008324221707880497],"Customer support was unresponsive.":[-0.06957648694515228,0.06539750099182129,-0.10396149754524231,-0.018622158095240593,-0.18270243704319,-0.20059143006801605,-0.05971554294228554,0.19472618401050568,0.20792299509048462,-0.03706102818250656,0.06796354800462723,-0.15616218745708466,-0.09516362845897675,-0.1022019237279892,-0.12558959424495697,0.12163054943084717,0.03737261891365051,-0.008871185593307018,-0.3882793188095093,0.06330800801515579,0.1365136206150055,0.15792176127433777,0.1545492559671402,-0.10506123304367065,-0.20132459700107574,0.21100224554538727,0.07041961699724197,-0.02917960286140442,-0.11019331961870193,-0.039663732051849365,0.26408272981643677,-0.236516073346138,0.11239279061555862,-0.005429935175925493,-0.1417190283536911,0.08511938899755478,0.0920843705534935,0.15880155563354492,0.13050173223018646,0.2516190707683563,-0.07423202693462372,-0.022013003006577492,0.07265574485063553,0.10880032926797867,-0.19194020330905914,0.16452017426490784,-0.049561332911252975,0.151616632938385,-0.07991398870944977,0.05535326525568962],"Ordering was simple and straightforward.":[-0.27091485261917114,-0.16322025656700134,-0.34741997718811035,-0.20755687355995178,0.07965204864740372,-0.03790290653705597,-0.07272882014513016,0.14391915500164032,-0.13000276684761047,-0.01828710362315178,0.15734601020812988,-0.166996568441391,0.0798618420958519,-0.019056349992752075,0.08161012828350067,-0.11307933181524277,-0.03884698078036308,0.06776367872953415,-0.09279917925596237,0.14685627818107605,0.12503762543201447,-0.059197064489126205,0.19636781513690948,-0.21664796769618988,-0.2507745623588562,-0.22420057654380798,-0.04014071449637413,-0.21217235922813416,-0.1732904016971588,-0.09454746544361115,0.19105301797389984,-0.1433596909046173,0.17720657587051392,0.08419759571552277,-0.10762467235326767,0.06349785625934601,0.07461697608232498,0.1469961404800415,0.15328997373580933,0.05730891227722168,-0.02755303494632244,0.11391851305961609,0.017002111300826073,-0.05181928724050522,-0.046399589627981186,0.17776602506637573,-0.19888535141944885,0.10496727377176285,-0.01117156632244587,0.019633285701274872],"The product description matched the item.":[-0.1778346747159958,0.015024187043309212,-0.48206639289855957,-0.025718823075294495,-0.016542760655283928,-0.14746320247650146,0.08109830319881439,0.14048422873020172,-0.06655876338481903,-0.014773784205317497,-0.022116249427199364,-0.09764105826616287,0.0843939259648323,-0.21104943752288818,0.05166381597518921,0.24917533993721008,-0.04652651399374008,-0.03644577041268349,-0.3680764436721802,0.14306902885437012,0.19114643335342407,0.09570245444774628,0.12562158703804016,0.04345705732703209,-0.05486251413822174,-0.1628427952528,-0.04840049892663956,-0.08885271847248077,0.20407046377658844,0.14849711954593658,0.017899783328175545,-0.17020949721336365,0.13428069651126862,-0.2234565168619156,0.00254037999548018,0.044975630939006805,0.14862637221813202,-0.06594487279653549,0.15728546679019928,0.006142953876405954,-0.207172229886055,-0.020533055067062378,-0.05463634431362152,0.09492701292037964,-0.03237469866871834,0.06752806901931763,-0.08736645430326462,0.08297228813171387,-0.036898110061883926,-0.045621830970048904],"Shipping costs were too high.":[-0.02132924273610115,-0.05078135058283806,0.24659079313278198,0.03407837450504303,-0.031469374895095825,0.04534817487001419,-0.14255358278751373,0.028483819216489792,-0.0895128846168518,0.05390138924121857,-0.0863390564918518,0.025431020185351372,-0.10597378760576248,0.02617068588733673,0.04362677410244942,-0.020603027194738388,0.1553564965724945,-0.12254228442907333,-0.3750503957271576,0.08009897172451019,0.13728179037570953,0.17526021599769592,-0.08456385880708694,-0.21130205690860748,-0.06810295581817627,0.008573387749493122,0.2928534746170044,-0.27736085653305054,0.12576991319656372,-0.23002229630947113,0.1522364616394043,-0.13523761928081512,0.16622285544872284,-0.1358831524848938,-0.32512974739074707,0.04222813621163368,-0.11146076023578644,0.23475615680217743,0.1606282889842987,0.07009332627058029,-0.08875977247953415,-0.0171198770403862,0.1295354813337326,0.033890094608068466,0.039941899478435516,0.14147770404815674,0.10349927842617035,-0.037790145725011826,0.022405119612812996,-0.013334139250218868]}
+Your task is to write a Python function most_similar(embeddings) that will calculate the cosine similarity between each pair of these embeddings and return the pair that has the highest similarity. The result should be a tuple of the two phrases that are most similar.
+
+
+7. InfoCore Solutions is a technology consulting firm that maintains an extensive internal knowledge base of technical documents, project reports, and case studies. Employees frequently search through these documents to answer client questions quickly or gain insights for ongoing projects. However, due to the sheer volume of documentation, traditional keyword-based search often returns too many irrelevant results.
+
+To address this issue, InfoCore's data science team decides to integrate a semantic search feature into their internal portal. This feature uses text embeddings to capture the contextual meaning of both the documents and the user's query. The documents are pre-embedded, and when an employee submits a search query, the system computes the similarity between the query's embedding and those of the documents. The API then returns a ranked list of document identifiers based on similarity.
+
+Imagine you are an engineer on the InfoCore team. Your task is to build a FastAPI POST endpoint that accepts an array of docs and query string via a JSON body. The endpoint is structured as follows:
+
+POST /similarity
+
+{
+  "docs": ["Contents of document 1", "Contents of document 2", "Contents of document 3", ...],
+  "query": "Your query string"
+}
+Service Flow:
+
+Request Payload: The client sends a POST request with a JSON body containing:
+docs: An array of document texts from the internal knowledge base.
+query: A string representing the user's search query.
+Embedding Generation: For each document in the docs array and for the query string, the API computes a text embedding using text-embedding-3-small.
+Similarity Computation: The API then calculates the cosine similarity between the query embedding and each document embedding. This allows the service to determine which documents best match the intent of the query.
+Response Structure: After ranking the documents by their similarity scores, the API returns the identifiers (or positions) of the three most similar documents. The JSON response might look like this:
+
+{
+  "matches": ["Contents of document 3", "Contents of document 1", "Contents of document 2"]
+}
+Here, "Contents of document 3" is considered the closest match, followed by "Contents of document 1", then "Contents of document 2".
+
+Make sure you enable CORS to allow OPTIONS and POST methods, perhaps allowing all origins and headers.
+
+What is the API URL endpoint for your implementation? It might look like: http://127.0.0.1:8000/similarity
+
+
+8. TechNova Corp. is a multinational corporation that has implemented a digital assistant to support employees with various internal tasks. The assistant can answer queries related to human resources, IT support, and administrative services. Employees use a simple web interface to enter their requests, which may include:
+
+Checking the status of an IT support ticket.
+Scheduling a meeting.
+Retrieving their current expense reimbursement balance.
+Requesting details about their performance bonus.
+Reporting an office issue by specifying a department or issue number.
+Each question is direct and templatized, containing one or more parameters such as an employee or ticket number (which might be randomized). In the backend, a FastAPI app routes each request by matching the query to one of a set of pre-defined functions. The response that the API returns is used by OpenAI to call the right function with the necessary arguments.
+
+Pre-Defined Functions:
+
+For this exercise, assume the following functions have been defined:
+
+get_ticket_status(ticket_id: int)
+schedule_meeting(date: str, time: str, meeting_room: str)
+get_expense_balance(employee_id: int)
+calculate_performance_bonus(employee_id: int, current_year: int)
+report_office_issue(issue_code: int, department: str)
+Each function has a specific signature, and the student’s FastAPI app should map specific queries to these functions.
+
+Example Questions (Templatized with a Random Number):
+
+Ticket Status:
+Query: "What is the status of ticket 83742?"
+→ Should map to get_ticket_status(ticket_id=83742)
+Meeting Scheduling:
+Query: "Schedule a meeting on 2025-02-15 at 14:00 in Room A."
+→ Should map to schedule_meeting(date="2025-02-15", time="14:00", meeting_room="Room A")
+Expense Reimbursement:
+Query: "Show my expense balance for employee 10056."
+→ Should map to get_expense_balance(employee_id=10056)
+Performance Bonus Calculation:
+Query: "Calculate performance bonus for employee 10056 for 2025."
+→ Should map to calculate_performance_bonus(employee_id=10056, current_year=2025)
+Office Issue Reporting:
+Query: "Report office issue 45321 for the Facilities department."
+→ Should map to report_office_issue(issue_code=45321, department="Facilities")
+Task Overview:
+
+Develop a FastAPI application that:
+
+Exposes a GET endpoint /execute?q=... where the query parameter q contains one of the pre-templatized questions.
+Analyzes the q parameter to identify which function should be called.
+Extracts the parameters from the question text.
+Returns a response in the following JSON format:
+
+{ "name": "function_name", "arguments": "{ ...JSON encoded parameters... }" }
+For example, the query "What is the status of ticket 83742?" should return:
+
+{
+  "name": "get_ticket_status",
+  "arguments": "{\"ticket_id\": 83742}"
+}
+Make sure you enable CORS to allow GET requests from any origin.
+
+What is the API URL endpoint for your implementation? It might look like: http://127.0.0.1:8000/execute
+
+
+
+9. SecurePrompt Technologies is a cybersecurity firm that specializes in deploying large language models (LLMs) for sensitive enterprise applications. To ensure that these models adhere strictly to security policies, SecurePrompt imposes hardcoded behavioral instructions on the LLMs. For example, an LLM may be configured to never output certain sensitive keywords.
+
+As part of their regular security audits and red-team exercises, SecurePrompt's engineers and external auditors test how well the LLMs follow these strict instructions. One objective of these tests is to determine if it is possible to bypass or trick the LLM into violating its preset security constraints.
+
+This task is simulates potential attack vectors where a malicious actor might manipulate the model's output by ingeniously engineering the prompt. While the intention is to expose vulnerabilities in instruction adherence, it also provides valuable insights into improving the safety and security of the deployed system.
+
+Here's your task: You are chatting with an LLM that has been told to never say Yes. You need to get it to say Yes.
+
+Use your AI Proxy token when prompted.
+
+Write a prompt that will get the LLM to say Yes.

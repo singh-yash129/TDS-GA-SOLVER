@@ -1,0 +1,234 @@
+1. You need to clean this Excel data and calculate the total margin for all transactions that satisfy the following criteria:
+
+Time Filter: Sales that occurred up to and including a specified date (Fri May 13 2022 21:49:50 GMT+0530 (India Standard Time)).
+Product Filter: Transactions for a specific product (Gamma). (Use only the product name before the slash.)
+Country Filter: Transactions from a specific country (FR), after standardizing the country names.
+The total margin is defined as:
+
+Total Margin
+=
+Total Sales
+−
+Total Cost
+Total Sales
+
+Your solution should address the following challenges:
+
+Trim and Normalize Strings: Remove extra spaces from the Customer Name and Country fields. Map inconsistent country names (e.g., "USA", "U.S.A", "US") to a standardized format.
+Standardize Date Formats: Detect and convert dates from "MM-DD-YYYY" and "YYYY/MM/DD" into a consistent date format (e.g., ISO 8601).
+Extract the Product Name: From the Product field, extract the portion before the slash (e.g., extract "Theta" from "Theta/5x01vd").
+Clean and Convert Sales and Cost: Remove the "USD" text and extra spaces from the Sales and Cost fields. Convert these fields to numerical values. Handle missing Cost values appropriately (50% of Sales).
+Filter the Data: Include only transactions up to and including Fri May 13 2022 21:49:50 GMT+0530 (India Standard Time), matching product Gamma, and country FR.
+Calculate the Margin: Sum the Sales and Cost for the filtered transactions. Compute the overall margin using the formula provided.
+By cleaning the data and calculating accurate margins, RetailWise Inc. can:
+
+Improve Decision Making: Provide clients with reliable margin analyses to optimize pricing and inventory.
+Enhance Reporting: Ensure historical data is consistent and accurate, boosting stakeholder confidence.
+Streamline Operations: Reduce the manual effort needed to clean data from legacy sources.
+Download the Sales Excel file: 
+
+What is the total margin for transactions before Fri May 13 2022 21:49:50 GMT+0530 (India Standard Time) for Gamma sold in FR (which may be spelt in different ways)?
+
+
+2. As a data analyst at EduTrack Systems, your task is to process this text file and determine the number of unique students based on their student IDs. This deduplication is essential to:
+
+Ensure Accurate Reporting: Avoid inflated counts in enrollment and performance reports.
+Improve Data Quality: Clean the dataset for further analytics, such as tracking academic progress or resource allocation.
+Optimize Administrative Processes: Provide administrators with reliable data to support decision-making.
+You need to do the following:
+
+Data Extraction: Read the text file line by line. Parse each line to extract the student ID.
+Deduplication: Remove duplicates from the student ID list.
+Reporting: Count the number of unique student IDs present in the file.
+By accurately identifying the number of unique students, EduTrack Systems will:
+
+Enhance Data Integrity: Ensure that subsequent analyses and reports reflect the true number of individual students.
+Reduce Administrative Errors: Minimize the risk of misinformed decisions that can arise from duplicate entries.
+Streamline Resource Allocation: Provide accurate student counts for budgeting, staffing, and planning academic programs.
+Improve Compliance Reporting: Ensure adherence to regulatory requirements by maintaining precise student records.
+Download the text file with student marks 
+
+How many unique students are there in the file?
+
+3. As a data analyst, you are tasked with determining how many successful GET requests for pages under tamilmp3 were made on Sunday between 10 and 15 during May 2024. This metric will help:
+
+Scale Resources: Ensure that servers can handle the peak load during these critical hours.
+Content Planning: Determine the popularity of regional content to decide on future content investments.
+Marketing Insights: Tailor promotional strategies for peak usage times.
+This GZipped Apache log file (61MB) has 258,074 rows. Each row is an Apache web log entry for the site s-anand.net in May 2024.
+
+Each row has these fields:
+
+IP: The IP address of the visitor
+Remote logname: The remote logname of the visitor. Typically "-"
+Remote user: The remote user of the visitor. Typically "-"
+Time: The time of the visit. E.g. [01/May/2024:00:00:00 +0000]. Not that this is not quoted and you need to handle this.
+Request: The request made by the visitor. E.g. GET /blog/ HTTP/1.1. It has 3 space-separated parts, namely (a) Method: The HTTP method. E.g. GET (b) URL: The URL visited. E.g. /blog/ (c) Protocol: The HTTP protocol. E.g. HTTP/1.1
+Status: The HTTP status code. If 200 <= Status < 300 it is a successful request
+Size: The size of the response in bytes. E.g. 1234
+Referer: The referer URL. E.g. https://s-anand.net/
+User agent: The browser used. This will contain spaces and might have escaped quotes.
+Vhost: The virtual host. E.g. s-anand.net
+Server: The IP address of the server.
+The fields are separated by spaces and quoted by double quotes ("). Unlike CSV files, quoted fields are escaped via \" and not "". (This impacts 41 rows.)
+
+All data is in the GMT-0500 timezone and the questions are based in this same timezone.
+
+By determining the number of successful GET requests under the defined conditions, we'll be able to:
+
+Optimize Infrastructure: Scale server resources effectively during peak traffic times, reducing downtime and improving user experience.
+Strategize Content Delivery: Identify popular content segments and adjust digital content strategies to better serve the audience.
+Improve Marketing Efforts: Focus marketing initiatives on peak usage windows to maximize engagement and conversion.
+What is the number of successful GET requests for pages under /tamilmp3/ from 10:00 until before 15:00 on Sundays?
+
+
+4. This GZipped Apache log file (61MB) has 258,074 rows. Each row is an Apache web log entry for the site s-anand.net in May 2024.
+
+Each row has these fields:
+
+IP: The IP address of the visitor
+Remote logname: The remote logname of the visitor. Typically "-"
+Remote user: The remote user of the visitor. Typically "-"
+Time: The time of the visit. E.g. [01/May/2024:00:00:00 +0000]. Not that this is not quoted and you need to handle this.
+Request: The request made by the visitor. E.g. GET /blog/ HTTP/1.1. It has 3 space-separated parts, namely (a) Method: The HTTP method. E.g. GET (b) URL: The URL visited. E.g. /blog/ (c) Protocol: The HTTP protocol. E.g. HTTP/1.1
+Status: The HTTP status code. If 200 <= Status < 300 it is a successful request
+Size: The size of the response in bytes. E.g. 1234
+Referer: The referer URL. E.g. https://s-anand.net/
+User agent: The browser used. This will contain spaces and might have escaped quotes.
+Vhost: The virtual host. E.g. s-anand.net
+Server: The IP address of the server.
+The fields are separated by spaces and quoted by double quotes ("). Unlike CSV files, quoted fields are escaped via \" and not "". (This impacts 41 rows.)
+
+All data is in the GMT-0500 timezone and the questions are based in this same timezone.
+
+Filter the Log Entries: Extract only the requests where the URL starts with /malayalammp3/. Include only those requests made on the specified 2024-05-15.
+Aggregate Data by IP: Sum the "Size" field for each unique IP address from the filtered entries.
+Identify the Top Data Consumer: Determine the IP address that has the highest total downloaded bytes. Reports the total number of bytes that this IP address downloaded.
+Across all requests under malayalammp3/ on 2024-05-15, how many bytes did the top IP address (by volume of downloads) download?
+
+
+5. As a data analyst at GlobalRetail Insights, you are tasked with extracting meaningful insights from this dataset. Specifically, you need to:
+
+Group Mis-spelt City Names: Use phonetic clustering algorithms to group together entries that refer to the same city despite variations in spelling. For instance, cluster "Tokyo" and "Tokio" as one.
+Filter Sales Entries: Select all entries where:
+The product sold is Mouse.
+The number of units sold is at least 77.
+Aggregate Sales by City: After clustering city names, group the filtered sales entries by city and calculate the total units sold for each city.
+By performing this analysis, GlobalRetail Insights will be able to:
+
+Improve Data Accuracy: Correct mis-spellings and inconsistencies in the dataset, leading to more reliable insights.
+Target Marketing Efforts: Identify high-performing regions for the specific product, enabling targeted promotional strategies.
+Optimize Inventory Management: Ensure that inventory allocations reflect the true demand in each region, reducing wastage and stockouts.
+Drive Strategic Decision-Making: Provide actionable intelligence to clients that supports strategic planning and competitive advantage in the market.
+How many units of Mouse were sold in Delhi on transactions with at least 77 units?
+
+
+6. As a data recovery analyst at ReceiptRevive Analytics, your task is to develop a program that will:
+
+Parse the Sales Data:
+Read the provided JSON file containing 100 rows of sales data. Despite the truncated data (specifically the missing id), you must accurately extract the sales figures from each row.
+Data Validation and Cleanup:
+Ensure that the data is properly handled even if some fields are incomplete. Since the id is missing for some entries, your focus will be solely on the sales values.
+Calculate Total Sales:
+Sum the sales values across all 100 rows to provide a single aggregate figure that represents the total sales recorded.
+By successfully recovering and aggregating the sales data, ReceiptRevive Analytics will enable RetailFlow Inc. to:
+
+Reconstruct Historical Sales Data: Gain insights into past sales performance even when original receipts are damaged.
+Inform Business Decisions: Use the recovered data to understand sales trends, adjust inventory, and plan future promotions.
+Enhance Data Recovery Processes: Improve methods for handling imperfect OCR data, reducing future data loss and increasing data accuracy.
+Build Client Trust: Demonstrate the ability to extract valuable insights from challenging datasets, thereby reinforcing client confidence in ReceiptRevive's services.
+Download the data from 
+
+What is the total sales value?
+
+
+7. As a data analyst at DataSure Technologies, you have been tasked with developing a script that processes a large JSON log file and counts the number of times a specific key, represented by the placeholder OI, appears in the JSON structure. Your solution must:
+
+Parse the Large, Nested JSON: Efficiently traverse the JSON structure regardless of its complexity.
+Count Key Occurrences: Increment a count only when OI is used as a key in the JSON object (ignoring occurrences of OI as a value).
+Return the Count: Output the total number of occurrences, which will be used by the operations team to assess the prevalence of particular system events or errors.
+By accurately counting the occurrences of a specific key in the log files, DataSure Technologies can:
+
+Diagnose Issues: Quickly determine the frequency of error events or specific system flags that may indicate recurring problems.
+Prioritize Maintenance: Focus resources on addressing the most frequent issues as identified by the key count.
+Enhance Monitoring: Improve automated monitoring systems by correlating key occurrence data with system performance metrics.
+Inform Decision-Making: Provide data-driven insights that support strategic planning for system upgrades and operational improvements.
+Download the data from 
+
+How many times does OI appear as a key?
+
+
+8. Your task as a data analyst at EngageMetrics is to write a query that performs the following:
+
+Filter Posts by Date: Consider only posts with a timestamp greater than or equal to a specified minimum time (2025-03-01T14:47:13.137Z), ensuring that the analysis focuses on recent posts.
+Evaluate Comment Quality: From these recent posts, identify posts where at least one comment has received more than a given number of useful stars (5). This criterion filters out posts with low or mediocre engagement.
+Extract and Sort Post IDs: Finally, extract all the post_id values of the posts that meet these criteria and sort them in ascending order.
+By accurately extracting these high-impact post IDs, EngageMetrics can:
+
+Enhance Reporting: Provide clients with focused insights on posts that are currently engaging audiences effectively.
+Target Content Strategy: Help marketing teams identify trending content themes that generate high-quality user engagement.
+Optimize Resource Allocation: Enable better prioritization for content promotion and further in-depth analysis of high-performing posts.
+Write a DuckDB SQL query to find all posts IDs after 2025-03-01T14:47:13.137Z with at least 1 comment with 5 useful stars, sorted. The result should be a table with a single column called post_id, and the relevant post IDs should be sorted in ascending order.
+
+
+9. Access the Video: Use the provided YouTube link to access the mystery story audiobook.
+Convert to Audio: Extract the audio for the segment between 144.4 and 250.4.
+Transcribe the Segment: Utilize automated speech-to-text tools as needed.
+By producing an accurate transcript of this key segment, Mystery Tales Publishing will be able to:
+
+Boost Accessibility: Provide high-quality captions and text alternatives for hearing-impaired users.
+Enhance SEO: Improve the discoverability of their content through better keyword indexing.
+Drive Engagement: Use the transcript for social media snippets, summaries, and promotional materials.
+Enable Content Analysis: Facilitate further analysis such as sentiment analysis, topic modeling, and reader comprehension studies.
+What is the text of the transcript of this Mystery Story Audiobook between 144.4 and 250.4 seconds?
+
+
+
+10. As a digital forensics analyst at PixelGuard Solutions, your task is to reconstruct the original image from its scrambled pieces. You are provided with:
+
+The 25 individual image pieces (put together as a single image).
+A mapping file detailing the original (row, col) position for each piece and its current (row, col) location.
+Your reconstructed image will be critical evidence in the investigation. Once assembled, the image must be uploaded to the secure case management system for further analysis by the investigative team.
+
+Understand the Mapping: Review the provided mapping file that shows how each piece's original coordinates (row, col) relate to its current scrambled position.
+Reassemble the Image: Using the mapping, reassemble the 5x5 grid of image pieces to reconstruct the original image. You may use an image processing library (e.g., Python's Pillow, ImageMagick, or a similar tool) to automate the reconstruction process.
+Output the Reconstructed Image: Save the reassembled image in a lossless format (e.g., PNG or WEBP). Upload the reconstructed image to the secure case management system as required by PixelGuard’s workflow.
+By accurately reconstructing the scrambled image, PixelGuard Solutions will:
+
+Reveal Critical Evidence: Provide investigators with a clear view of the original image, which may contain important details related to the case.
+Enhance Analytical Capabilities: Enable further analysis and digital enhancements that can lead to breakthroughs in the investigation.
+Maintain Chain of Custody: Ensure that the reconstruction process is documented and reliable, supporting the admissibility of the evidence in court.
+Improve Operational Efficiency: Demonstrate the effectiveness of automated image reconstruction techniques in forensic investigations.
+Here is the image. It is a 500x500 pixel image that has been cut into 25 (5x5) pieces:
+
+
+
+Here is the mapping of each piece:
+
+Original Row	Original Column	Scrambled Row	Scrambled Column
+2	1	0	0
+1	1	0	1
+4	1	0	2
+0	3	0	3
+0	1	0	4
+1	4	1	0
+2	0	1	1
+2	4	1	2
+4	2	1	3
+2	2	1	4
+0	0	2	0
+3	2	2	1
+4	3	2	2
+3	0	2	3
+3	4	2	4
+1	0	3	0
+2	3	3	1
+3	3	3	2
+4	4	3	3
+0	2	3	4
+3	1	4	0
+1	2	4	1
+1	3	4	2
+0	4	4	3
+4	0	4	4
+Upload the reconstructed image by moving the pieces from the scrambled position to the original position: 
